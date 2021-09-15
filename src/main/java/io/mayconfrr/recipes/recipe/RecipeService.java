@@ -33,10 +33,10 @@ public class RecipeService {
     }
 
     public Iterable<Recipe> getAllRecipesByCategory(String category) {
-        return null;
+        return recipeRepository.findAllByCategoryIgnoreCaseOrderByDateDesc(category);
     }
 
     public Iterable<Recipe> getAllRecipesContainingName(String name) {
-        return null;
+        return recipeRepository.findAllByNameContainsIgnoreCaseOrderByDateDesc(name);
     }
 }

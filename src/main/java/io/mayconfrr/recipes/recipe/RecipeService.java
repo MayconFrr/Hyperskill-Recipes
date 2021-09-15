@@ -25,5 +25,10 @@ public class RecipeService {
     }
 
     public void updateRecipeById(Long id, Recipe recipe) {
+        if (!recipeRepository.existsById(id)) {
+            throw new RecipeNotFoundException();
+        }
+        recipe.setId(id);
+        recipeRepository.save(recipe);
     }
 }

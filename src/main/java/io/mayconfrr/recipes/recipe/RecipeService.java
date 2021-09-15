@@ -23,4 +23,20 @@ public class RecipeService {
         }
         recipeRepository.deleteById(id);
     }
+
+    public void updateRecipeById(Long id, Recipe recipe) {
+        if (!recipeRepository.existsById(id)) {
+            throw new RecipeNotFoundException();
+        }
+        recipe.setId(id);
+        recipeRepository.save(recipe);
+    }
+
+    public Iterable<Recipe> getAllRecipesByCategory(String category) {
+        return recipeRepository.findAllByCategoryIgnoreCaseOrderByDateDesc(category);
+    }
+
+    public Iterable<Recipe> getAllRecipesContainingName(String name) {
+        return recipeRepository.findAllByNameContainsIgnoreCaseOrderByDateDesc(name);
+    }
 }

@@ -25,7 +25,7 @@ public class RecipeController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteRecipe(@PathVariable Long id) {
         recipeService.deleteRecipeById(id);
     }

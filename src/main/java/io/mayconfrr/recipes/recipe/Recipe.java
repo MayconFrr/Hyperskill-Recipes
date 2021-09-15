@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
@@ -16,16 +19,22 @@ public class Recipe {
     @GeneratedValue
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
+    @NotBlank
     @Column(nullable = false)
     private String description;
 
+    @NotNull
+    @Size(min = 1)
     @ElementCollection
     @Column(nullable = false)
     private List<String> ingredients;
 
+    @NotNull
+    @Size(min = 1)
     @ElementCollection
     @Column(nullable = false)
     private List<String> directions;

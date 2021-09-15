@@ -31,6 +31,12 @@ public class RecipeController {
         recipeService.deleteRecipeById(id);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateRecipe(@PathVariable Long id, @Valid @RequestBody Recipe recipe) {
+        recipeService.updateRecipeById(id, recipe);
+    }
+
     @ExceptionHandler(RecipeNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void recipeNotFoundExceptionHandler() {

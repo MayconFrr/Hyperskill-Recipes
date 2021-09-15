@@ -23,4 +23,7 @@ public class RecipeService {
         }
         recipeRepository.deleteById(id);
     }
+
+    public void updateRecipeById(Long id, Recipe recipe) {
+    }
 }

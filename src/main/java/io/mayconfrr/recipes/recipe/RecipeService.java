@@ -2,15 +2,15 @@ package io.mayconfrr.recipes.recipe;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class RecipeService {
-    private Recipe recipe;
-
-    public Recipe getRecipe() {
-        return recipe;
+    public Long saveRecipe(Recipe recipe) {
+        return null;
     }
 
-    public void saveRecipe(Recipe recipe) {
-        this.recipe = recipe;
+    public Optional<Recipe> getRecipeById(Long id) {
+        return Optional.empty();
     }
 }

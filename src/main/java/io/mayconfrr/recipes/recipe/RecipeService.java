@@ -31,4 +31,12 @@ public class RecipeService {
         recipe.setId(id);
         recipeRepository.save(recipe);
     }
+
+    public Iterable<Recipe> getAllRecipesByCategory(String category) {
+        return null;
+    }
+
+    public Iterable<Recipe> getAllRecipesContainingName(String name) {
+        return null;
+    }
 }

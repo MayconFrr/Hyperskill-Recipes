@@ -1,4 +1,6 @@
 package io.mayconfrr.recipes.recipe;
 
-public class RecipeNotFoundException extends Throwable {
+import javax.persistence.EntityNotFoundException;
+
+public class RecipeNotFoundException extends RuntimeException {
 }

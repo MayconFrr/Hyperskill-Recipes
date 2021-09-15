@@ -1,16 +1,20 @@
 package io.mayconfrr.recipes.recipe;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
-public class RecipeService {
-    private Recipe recipe;
+import java.util.Optional;
 
-    public Recipe getRecipe() {
-        return recipe;
+@Service
+@RequiredArgsConstructor
+public class RecipeService {
+    private final RecipeDao recipeDao;
+
+    public Long saveRecipe(Recipe recipe) {
+        return recipeDao.save(recipe);
     }
 
-    public void saveRecipe(Recipe recipe) {
-        this.recipe = recipe;
+    public Optional<Recipe> getRecipeById(Long id) {
+        return recipeDao.findById(id);
     }
 }

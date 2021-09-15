@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
@@ -20,7 +21,7 @@ public class RecipeController {
     }
 
     @PostMapping("/new")
-    public Map<String, Long> postRecipe(@RequestBody Recipe recipe) {
+    public Map<String, Long> postRecipe(@Valid @RequestBody Recipe recipe) {
         return Map.of("id", recipeService.saveRecipe(recipe));
     }
 

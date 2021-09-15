@@ -3,18 +3,24 @@ package io.mayconfrr.recipes.recipe;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class RecipeService {
-    private final RecipeDao recipeDao;
+    private final RecipeRepository recipeRepository;
 
     public Long saveRecipe(Recipe recipe) {
-        return recipeDao.save(recipe);
+        recipe.setId(null);
+        return recipeRepository.save(recipe).getId();
     }
 
-    public Optional<Recipe> getRecipeById(Long id) {
-        return recipeDao.findById(id);
+    public Recipe getRecipeById(Long id) {
+        return recipeRepository.findById(id).orElseThrow(RecipeNotFoundException::new);
+    }
+
+    public void deleteRecipeById(Long id) {
+        if (!recipeRepository.existsById(id)) {
+            throw new RecipeNotFoundException();
+        }
+        recipeRepository.deleteById(id);
     }
 }

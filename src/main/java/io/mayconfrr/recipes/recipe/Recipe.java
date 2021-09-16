@@ -2,10 +2,10 @@ package io.mayconfrr.recipes.recipe;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AccessLevel;
+import io.mayconfrr.recipes.user.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -51,4 +51,9 @@ public class Recipe {
     @ElementCollection
     @Column(nullable = false)
     private List<String> directions;
+
+    @JsonIgnore
+    @Immutable
+    @ManyToOne(optional = false)
+    private User author;
 }
